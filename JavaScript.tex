@@ -178,12 +178,12 @@
 \DeclareGraphicsExtensions{.eps, .jpg}
 \fi
 
-\begin{multicols*}{2}
+\begin{multicols*}{3}
 
 \section*{JavaScript samenvatting}
-Deze samenvatting bevat de basis van JavaScript.
+Deze samenvatting bevat de basis van JavaScript voor het gebruik in de browser.
 
-\section*{HTML, CSS en JavaScript}
+\subsection*{Structuur, inhoud vorm en interactie}
 HTML vormt de structuur en de inhoud van een pagina en bestaat uit tags die door de browser worden begrepen. CSS zorgt voor de vormgeving van die inhoud. JavaScript zorgt voor interactie tussen de gebruiker en de website. Denk bijvoorbeeld aan meldingen, slideshows, lightboxes en invoervalidatie.
 
 JavaScript is een programmeertaal, in een programmeertaal schrijf je programmas die uitgevoerd kunnen worden. In dit geval worden de programmas uitgevoerd door de browser.
@@ -204,12 +204,11 @@ Hieronder een HTML5 pagina met een stylesheet en een JavaScript bestand gekoppel
 
 \subsection*{Variabelen}
 Een variabele gebruik je binnen een programma om aan waardes te refereren. Een variabele heeft een naam en een waarde.
-
 \begin{lstlisting}[language=javascript]
 	var naam = "Niels";
 	var leeftijd = 34;
 	var gewicht = 64.5;
-	var hobbies = ['hardlopen', 'programmeren', 'reizen'];
+	var hobbies = ['hardlopen', 'programmeren', 'reizen']; // een Array met waarden
 	var docent = true;
 	var schatrijk = false;
 \end{lstlisting}
@@ -217,7 +216,6 @@ Een variabele gebruik je binnen een programma om aan waardes te refereren. Een v
 \noindent Met variabelen kun je in je programma van alles doen. Je kunt ze veranderen, gebruiken in berekeningen en je kunt nieuwe variabelen maken.
 
 Om een nieuwe variabele te declareren gebruik je het keyword `var'. Hieronder enkele voorbeelden.
-
 \begin{lstlisting}[language=javascript]
 	var a = 10;
 	var b = 20;
@@ -233,7 +231,6 @@ Om een nieuwe variabele te declareren gebruik je het keyword `var'. Hieronder en
 
 \subsection*{Operatoren}
 Er zijn in JavaScript verschillende operatoren die je kunt gebruiken om variabelen te bewerken. Bijvoorbeeld om te rekenen met getallen of om twee strings samen te voegen.
-
 \begin{lstlisting}[language=javascript]
 var a = 8.45;
 var b = 3.23;
@@ -250,27 +247,126 @@ var volledigeNaam = voornaam + " " + achternaam;
 \subsection*{Functies}
 Functies zijn delen van een programma die een specifieke taak hebben. Je kunt bijvoorbeeld een functie maken om twee getallen bij elkaar op te tellen of een functie om te controleren of een ingevoerd e-mailadres geldig is.
 
-Er zijn binnen JavaScript ook een heleboel ingebouwde functies die je kunt gebruiken. Bijvoorbeeld om een willekeurig getal op te vragen met \texttt{Math.random()}, of om een string op te delen met de \texttt{split()} functie op een string.
+Een functie heeft een naam, kan een of meer argumenten mee krijgen en kan een resultaat teruggeven.
+\begin{lstlisting}[language=javascript]
+var waarde = telOp(10, 4); 
+	
+function telOp(a, b) {
+	var resultaat = a + b;
+	return resultaat;
+}
+\end{lstlisting}
+\noindent Er zijn binnen JavaScript ook een heleboel ingebouwde functies die je kunt gebruiken. Bijvoorbeeld om een willekeurig getal op te vragen met \texttt{Math.random()}, of om een string op te delen met de \texttt{split()} functie op een string.
 
 \begin{lstlisting}[language=javascript]
 var x = Math.random() * 100; // willekeurig getal tussen 0 en 100;
 
 var zin =  "Hallo ik ben een programmeur";
-var woorden = zin.split(' ');
+var woorden = zin.split(' '); // ['Hallo', 'ik', 'ben', 'een', 'programmeur'];
 \end{lstlisting}
 
-\section*{JavaScript en de DOM}
+\subsection*{Herhalingen}
+Vaak wil je handelingen meer dan \'e\'en keer uitvoeren. Dit kan in JavaScript met \texttt{for} loops en met \texttt{while} loops. For loops gebruik je als je van tevoren weet hoe vaak je iets wilt herhalen. While loops gebruik je als je dat niet van te voren weet, bijvoorbeeld als je in een lijst op zoek bent naar een naam van iemand of als je het 152e priemgetal na de 10000 zoekt.
 
+Een \texttt{for} loop bestaat uit drie gedeeltes, de initialisatie, de conditie en een opdracht die na iedere herhaling wordt uitgevoerd. Onderstaande lus wordt 100 keer herhaald.
 
-\subsection*{Handige websites}
-Er zijn veel sites met informatie over JavaScript, hier een paar voorbeelden:
-\begin{itemize}
-	\item Dabblet \url{dabblet.com}
-	\item CodePen \url{codepen.io}
-	\item Mozilla Developers Network \url{http://goo.gl/UzgJQ}
-	\item Codeacademy \url{codeacademy.com}
-	\item Code avengers \url{codeavengers.com}
-\end{itemize}
+\begin{lstlisting}[language=javascript]
+for (var i=0; i < 100; i++) {
+	// code die 100 keer wordt uitgevoerd
+}
+\end{lstlisting}
+
+\noindent Een while loop kent alleen een conditie. Zolang die conditie `waar' is wordt de code herhaald. Als je niet goed oplet hiermee maak je makkelijk een loop die oneindig lang wordt herhaald, waardoor je browser vast loopt.
+
+\begin{lstlisting}[language=javascript]
+var i = 0;
+while (i < 100) {
+	// code wordt herhaald
+	i++;
+}
+\end{lstlisting}
+
+\subsection*{Situatie afhankelijk code uitvoeren}
+Soms wil je in een programma afhankelijk van een situatie bepaalde code uitvoeren. Dit kan met een \texttt{if} statement. Denk bijvoorbeeld aan een spelletje waarbij je wilt controleren of iemand gewonnen of verloren heeft.
+\begin{lstlisting}[language=javascript]
+if (score > 10) {
+	alert('goed bezig');
+} else {
+	alert('goed je best blijven doen');
+}
+\end{lstlisting}
+
+\section*{JavaScript en de browser}
+De webbrowser voert het JavaScript programma uit. Vaak wil je vanuit JavaScript de inhoud of de vormgeving van een of meer elementen op een webpagina aanpassen (bijvoorbeeld van een divje). Dit gaat via het Document Object Model (DOM).
+
+\subsection*{Document Object Model (DOM)}
+De DOM wordt door je browser gemaakt aan de hand van de tags in de HTML code (elementen). Ieder element van een webpagina is een onderdeel van de DOM. 
+
+De DOM is een \textbf{boomstructuur} met de \texttt{HTML} tag als begin. Onder de \texttt{HTML} tag komt altijd een \texttt{HEAD} tag en een \texttt{BODY} tag. Binnen die tags komen weer andere tags zoals de \texttt{TITLE} tag in de head en \texttt{ARTICLE} en \texttt{SECTION} tags in de body. 
+
+\subsection*{Wachen tot de DOM geladen is}
+Voordat je met JavaScript de DOM aan kunt passen, moet je er voor zorgen dat je zeker weet dat de DOM volledig is geladen door de browser. Dit kan met behulp van het \texttt{window.onload} event.
+\begin{lstlisting}[language=javascript]
+window.onload = init;
+
+function init() {
+	// De DOM is nu geladen
+	var blokje = document.getElementById('blokje');
+	blokje.style.backgroundColor = 'red';
+}
+\end{lstlisting}
+
+\subsection*{Elementen uit de DOM opvragen}
+Met JavaScript kun je elementen uit de DOM opvragen. Dit kan op verschillende manieren. Als je een uniek element op wilt vragen gebruik je meestal \texttt{document.getElementById} of \texttt{document.querySelector()}. De query selector is krachtiger en maakt gebruik van de zelfde manier van selecteren als CSS. Hieronder een paar voorbeelden.
+
+\begin{lstlisting}[language=HTML]
+<div id="blokje"></div>
+<ul>
+	<li class="item">item 1</li>
+	<li class="item">item 2</li>
+	<li class="item">item 3</li>
+</ul>
+\end{lstlisting}
+
+\begin{lstlisting}[language=javascript]
+var blokje = document.getElementById('blokje'); // vraag het divje op met ID blokje
+var blokje = document.querySelector('#blokje'); // zelfde maar dan met query selector
+\end{lstlisting}
+
+\noindent Je kunt ook meerdere elementen selecteren met \texttt{document.getElementsByClassName} en met \texttt{document.querySelectorAll}. Deze functies leveren een lijst op met elementen uit de DOM.
+
+\begin{lstlisting}[language=javascript]
+var items = document.getElementsByClassName('item'); // vraag all elementen met class item op
+var items = document.querySelectorAll('.item'); // zelfde maar dan met query selector
+\end{lstlisting}
+
+\subsection*{Elementen aanpassen}
+Met \texttt{innerHTML} kun je de inhoud van een geselecteerd element aanpassen.
+\begin{lstlisting}[language=javascript]
+var blokje = document.getElementById('blokje');
+blokje.innerHTML = "Hallo Wereld!";
+\end{lstlisting}
+\noindent Je kunt ook de style van een element aanpassen.
+\begin{lstlisting}[language=javascript]
+var blokje = document.getElementById('blokje');
+blokje.style.backgroundColor = 'green';
+blokje.style.top = '100px';
+\end{lstlisting}
+
+\subsection*{Events afvangen}
+Om je pagina interactief te maken kun je met JavaScript op bepaalde gebeurtenissen reageren. Dit noemen we \emph{event handling}. Er zijn heel veel verschillende soorten events, bijvoorbeeld events als de bezoeker ergens op klikt met de muis of als iemand een formulier verstuurd.
+
+Ook het wachten tot de DOM geladen is, is het afhandelen van een event.
+
+\begin{lstlisting}[language=javascript]
+var knop = document.getElementById('knop');
+
+knop.onclick = volgendeFoto; // koppel de functie volgendeFoto aan het klikken op de knop
+
+function volgendeFoto() {
+	// toon de volgende foto
+}
+\end{lstlisting}
 
 \end{multicols*}
 \end{document}
