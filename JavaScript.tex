@@ -1,0 +1,276 @@
+%
+%  handleidinghuis
+%
+%  Created by Niels Doorn on 2010-07-04.
+%  Copyright (c) 2010 __MyCompanyName__. All rights reserved.
+%
+\documentclass[8pt,pagesize,footinclude=false,headinclude=false]{scrartcl}
+
+
+% Copyright (C) 2008, 2009, 2010 Bert Burgemeister
+%
+% Permission is granted to copy, distribute and/or modify this
+% document under the terms of the GNU Free Documentation License,
+% Version 1.2 or any later version published by the Free Software
+% Foundation; with no Invariant Sections, no Front-Cover Texts and
+% no Back-Cover Texts. For details see file COPYING.
+%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{textcase}
+\usepackage{textcomp}
+\usepackage{ulem}
+\usepackage[usenames,dvips]{color}
+\usepackage{suffix}
+\usepackage{makeidx}
+\usepackage[pagestyles]{titlesec}
+\usepackage{titletoc}
+%
+%%%%%%%%%%%%%%%%%%
+% Two font alternatives:
+% (A) All (except cover pages) Computer Modern --
+%     everything comes from the same sound root; gets about 5% longer
+%     than alternative (B) 
+\usepackage{type1cm}
+\usepackage{exscale}
+%%%%%%%%%%%%%%%%%%
+% (B) Times mixed with Helvetica --
+%     different sources; need scaling as they don't even agree in
+%     their concept of height
+%\usepackage{mathptmx}
+%\usepackage[scaled]{helvet}
+%%%%%%%%%%%%%%%%%%
+%
+
+
+% outsourced page dimensions for A4 paper
+%\setlength{\paperwidth}{10.5cm}
+%\setlength{\paperheight}{29.7cm}
+%%\areaset[10mm]{8cm}{29cm}
+%\typearea[3mm]{20}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+\usepackage[dutch]{babel}
+
+\usepackage[a4paper,landscape]{geometry}
+%\usepackage[a4paper,hmargin=1cm,vmargin=1cm]{geometry}
+\usepackage{multicol}
+
+% Setup for fullpage use
+\usepackage[cm]{fullpage}
+
+\usepackage{eurosym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+\definecolor{lightgray}{rgb}{0.01,0.01,0.01}
+
+\title{JavaScript Samenvatting}
+\author{Niels Doorn}
+\date{\today}
+
+\usepackage[bookmarks=true,pdftex,bookmarksopen=true,bookmarksnumbered=true,pdfborder={0 0 0 0}]{hyperref}
+
+
+\titleformat{\section}{\sffamily\mdseries\slshape}
+            {\huge\thesection}{.7em}{\huge}[{\titlerule[0.25pt]}]
+            
+\titleformat{\subsection}{\sffamily\mdseries\slshape}
+            {\Large\thesubsection}{.7em}{\Large}[{\titlerule[0.25pt]}]
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, for, Array, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+        basicstyle=\footnotesize\ttfamily, % Standardschrift
+        %numbers=left,               % Ort der Zeilennummern
+        numberstyle=\tiny,          % Stil der Zeilennummern
+        %stepnumber=2,               % Abstand zwischen den Zeilennummern
+        numbersep=5pt,              % Abstand der Nummern zum Text
+        tabsize=2,                  % Groesse von Tabs
+        extendedchars=true,         %
+        breaklines=true,            % Zeilen werden Umgebrochen
+        keywordstyle=\bfseries,
+		%commentstyle=\em\color{gray},
+        frame=trlb,         
+%        keywordstyle=[1]\textbf,    % Stil der Keywords
+%        keywordstyle=[2]\textbf,    %
+%        keywordstyle=[3]\textbf,    %
+%        keywordstyle=[4]\textbf,   \sqrt{\sqrt{}} %
+        stringstyle=\bfseries\color{gray}, % Farbe der String
+        showspaces=false,           % Leerzeichen anzeigen ?
+        showtabs=false,             % Tabs anzeigen ?
+        xleftmargin=0pt,
+        framexleftmargin=0pt,
+        framexrightmargin=0pt,
+        framexbottommargin=0pt,
+        %backgroundcolor=\color{lightgray},
+        showstringspaces=false      % Leerzeichen in Strings anzeigen ?        
+}
+\lstloadlanguages{% Check Dokumentation for further languages ...
+         %[Visual]Basic
+         %Pascal
+         %C
+         %C++
+         XML,
+         HTML,
+         Java,
+         PHP,
+		 JavaScript
+}
+
+\hypersetup{
+	pdfauthor = {Niels Doorn},
+	pdftitle = {JavaScript samenvatting},
+	pdfsubject = {JavaScript, programming},
+	pdfkeywords = {JavaScript, code, examples},
+	pdfcreator = {NielsDoorn}
+}
+
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{}
+\lhead{}
+\chead{}
+\lfoot{Versie 0.1 - Niels Doorn \copyright~2013}
+\cfoot{\url{http://www.nielsdoorn.nl}}
+\rfoot{\thepage\ van \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+\usepackage{pst-barcode}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\begin{multicols*}{2}
+
+\section*{JavaScript samenvatting}
+Deze samenvatting bevat de basis van JavaScript.
+
+\section*{HTML, CSS en JavaScript}
+HTML vormt de structuur en de inhoud van een pagina en bestaat uit tags die door de browser worden begrepen. CSS zorgt voor de vormgeving van die inhoud. JavaScript zorgt voor interactie tussen de gebruiker en de website. Denk bijvoorbeeld aan meldingen, slideshows, lightboxes en invoervalidatie.
+
+JavaScript is een programmeertaal, in een programmeertaal schrijf je programmas die uitgevoerd kunnen worden. In dit geval worden de programmas uitgevoerd door de browser.
+
+JavaScript kan ook gebruikt worden om de gebruikerservaring van een site te verbeteren zoals bijvoorbeeld met parallax effecten, smooth scrolling en drag-and-drop.
+
+Daarnaast kent HTML5 een aantal API's die je kunt gebruiken voor bijvoorbeeld geolocating, local storage, canvas en het besturen van audio en video.
+
+Ook wordt JavaScript gebruikt om met de webserver te communiceren (AJAX).
+
+\subsection*{JavaScript in een extern bestand}
+JavaScript kun je in de HTML code plaatsen tussen \texttt{<script>} tags, maar het is beter om je code te scheiden van de HTML en CSS door het in een of meerdere aparte bestanden te plaatsen.
+
+Hieronder een HTML5 pagina met een stylesheet en een JavaScript bestand gekoppeld.
+\lstinputlisting{code/basis.html}
+
+\section*{JavaScript programmeren}
+
+\subsection*{Variabelen}
+Een variabele gebruik je binnen een programma om aan waardes te refereren. Een variabele heeft een naam en een waarde.
+
+\begin{lstlisting}[language=javascript]
+	var naam = "Niels";
+	var leeftijd = 34;
+	var gewicht = 64.5;
+	var hobbies = ['hardlopen', 'programmeren', 'reizen'];
+	var docent = true;
+	var schatrijk = false;
+\end{lstlisting}
+
+\noindent Met variabelen kun je in je programma van alles doen. Je kunt ze veranderen, gebruiken in berekeningen en je kunt nieuwe variabelen maken.
+
+Om een nieuwe variabele te declareren gebruik je het keyword `var'. Hieronder enkele voorbeelden.
+
+\begin{lstlisting}[language=javascript]
+	var a = 10;
+	var b = 20;
+	var c = a + b;
+	
+	var voornaam = "Walter";
+	var achternaam = "White";
+	var volledigeNaam = voornaam + " " + achternaam;
+	
+	var x = 12;
+	x = x * 8;
+\end{lstlisting}
+
+\subsection*{Operatoren}
+Er zijn in JavaScript verschillende operatoren die je kunt gebruiken om variabelen te bewerken. Bijvoorbeeld om te rekenen met getallen of om twee strings samen te voegen.
+
+\begin{lstlisting}[language=javascript]
+var a = 8.45;
+var b = 3.23;
+var c = a * b;
+var d = a / b;
+var e = c - b;
+var f = d + a;
+
+var voornaam = "Skyler";
+var achternaam = "White";
+var volledigeNaam = voornaam + " " + achternaam;
+\end{lstlisting}
+
+\subsection*{Functies}
+Functies zijn delen van een programma die een specifieke taak hebben. Je kunt bijvoorbeeld een functie maken om twee getallen bij elkaar op te tellen of een functie om te controleren of een ingevoerd e-mailadres geldig is.
+
+Er zijn binnen JavaScript ook een heleboel ingebouwde functies die je kunt gebruiken. Bijvoorbeeld om een willekeurig getal op te vragen met \texttt{Math.random()}, of om een string op te delen met de \texttt{split()} functie op een string.
+
+\begin{lstlisting}[language=javascript]
+var x = Math.random() * 100; // willekeurig getal tussen 0 en 100;
+
+var zin =  "Hallo ik ben een programmeur";
+var woorden = zin.split(' ');
+\end{lstlisting}
+
+\section*{JavaScript en de DOM}
+
+
+\subsection*{Handige websites}
+Er zijn veel sites met informatie over JavaScript, hier een paar voorbeelden:
+\begin{itemize}
+	\item Dabblet \url{dabblet.com}
+	\item CodePen \url{codepen.io}
+	\item Mozilla Developers Network \url{http://goo.gl/UzgJQ}
+	\item Codeacademy \url{codeacademy.com}
+	\item Code avengers \url{codeavengers.com}
+\end{itemize}
+
+\end{multicols*}
+\end{document}
